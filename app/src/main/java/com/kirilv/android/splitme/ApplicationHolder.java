@@ -9,7 +9,7 @@ import com.kirilv.android.splitme.model.User;
 public class ApplicationHolder extends Application {
 
 	private static final ApplicationHolder instance = new ApplicationHolder();
-
+	// Test commit
 	private boolean changed = true;
 	private boolean percentageViewInListView = true;
 	private int completedSteps = 1;
