@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">SplitMe</string>
+    
+    <string name="loading">Loading. Please, wait&#8230;</string>
+    
+    <string name="btn_ok">OK</string>
+    <string name="btn_yes">YES</string>
+    <string name="btn_no">NO</string>
+    
+    <string name="hint_name">name</string>
+    <string name="hint_bill">bill</string>
+    
+    <string name="menu_menu">Menu</string>
+    <string name="menu_continue">Continue</string>
+    <string name="menu_auto_fill">Autofill</string>
+    <string name="menu_remove_all">Remove All</string>
+    
+	<string name="desc_user">user</string>
+	<string name="desc_delete">delete</string>	
+	
+	<string name="lbl_users">People: </string>
+	<string name="lbl_bills">Bills: </string>
+	<string name="lbl_total">Total</string>	
+	
+	<string name="lbl_title_members">Members</string>
+	<string name="lbl_title_sections">Sections</string>
+	<string name="lbl_title_summary">Summary</string>
+	<string name="lbl_title_report">Report</string>
+	<string name="lbl_title_report_export">Choose App</string>
+	
+	<string name="msg_select_member">Are you sure you have selected members for your group?</string>
+	<string name="msg_select_member_names">Are you sure you have provided a name for each member?</string>
+	<string name="msg_select_remove_member">Select 1 member, if you want to remove!</string>
+	<string name="msg_select_remove_members">Select ### members, if you want to remove!</string>
+	
+	<string name="msg_select_section">Are you sure you have selected a bill?</string>
+	<string name="msg_select_section_names">Are you sure you have provided a name for each bill?</string>
+	<string name="msg_select_section_unique_names">Are you sure that each bill has a unique name?</string>
+	<string name="msg_select_section_amount">Are you sure that at least one bill has an amount greater than 0?</string>
+	<string name="msg_select_remove_section">Select 1 bill, if you want to remove!</string>
+	<string name="msg_select_remove_sections">Select ### bills, if you want to remove!</string>
+	
+	<string name="msg_reset">Reset</string>
+	<string name="msg_reset_members_changes">All percentages have been reset, due to members changes!</string>
+	
+	<string name="msg_reset_percentages">Do you want to reset all percentages?</string>
+	
+	<string name="export_name">Name</string>
+	<string name="export_price">Price</string>
+	
+	<string name="message_exit_application">Are you sure you want to exit?</string>
+	
+</resources>

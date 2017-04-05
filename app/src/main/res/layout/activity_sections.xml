@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".SectionsActivity" >
+    
+<!--     <com.google.ads.AdView  -->
+<!-- 	    android:id="@+id/ad" -->
+<!-- 	    android:layout_width="match_parent" -->
+<!-- 	    android:layout_height="wrap_content" -->
+<!-- 	    ads:loadAdOnCreate="true" -->
+<!-- 	    ads:adUnitId="ca-app-pub-6253800606310061/2864766036" -->
+<!-- 	    ads:adSize="BANNER" /> -->
+
+	<TextView
+        android:id="@+id/seekbar_title"
+        style="@style/txtSeekBarTitle" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/seekbar_height" >
+
+   	    <TextView
+			android:id="@+id/seekbar_value"
+		    style="@style/txtSeekBarValue" />
+   	     	
+   		<SeekBar
+	    	android:id="@+id/seekbar"
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/seekbar_height"
+	        android:progressDrawable="@drawable/progress"
+	        android:layout_toLeftOf="@+id/seekbar_value"
+	        android:thumb="@drawable/ic_thumb"
+	        android:splitTrack="false"
+	        android:max="30"
+	        android:progress="0" />
+    	     	
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/separator_height"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="@dimen/separator_side_margins"
+    	android:layout_marginRight="@dimen/separator_side_margins"
+        android:background="#FFFFFF" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="@dimen/listview_side_margin"
+        android:layout_marginRight="@dimen/listview_side_margin"
+        android:layout_marginTop="@dimen/listview_margin_top"
+        android:divider="#AA3187a3"
+        android:descendantFocusability="beforeDescendants"
+        android:dividerHeight="@dimen/listview_divider_height" />
+	
+</LinearLayout>

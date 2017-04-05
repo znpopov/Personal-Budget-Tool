@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">SplitMe</string>
+    
+    <string name="loading">Зареждане. Моля, изчакайте&#8230;</string>
+    
+    <string name="btn_ok">РАЗБРАХ</string>
+    <string name="btn_yes">ДА</string>
+    <string name="btn_no">НЕ</string>
+    
+    <string name="hint_name">име</string>
+    <string name="hint_bill">сметка</string>
+     
+    <string name="menu_menu">Меню</string>
+    <string name="menu_continue">Продължи</string>
+    <string name="menu_auto_fill">Автопопълване</string>
+    <string name="menu_remove_all">Изтрий Всичко</string>
+    
+	<string name="desc_user">участник</string> 
+	<string name="desc_delete">изтриване</string>	
+	
+	<string name="lbl_users">Хора: </string>
+	<string name="lbl_bills">Сметки: </string>
+	<string name="lbl_total">Общо</string>	
+	
+	<string name="lbl_title_members">Участници</string>
+	<string name="lbl_title_sections">Секции</string>
+	<string name="lbl_title_summary">Равносметка</string>
+	<string name="lbl_title_report">Статистика</string>
+	<string name="lbl_title_report_export">Изберете</string>
+	
+	<string name="msg_select_member">Сигурни ли сте, че сте избрали хора за вашата група?</string>
+	<string name="msg_select_member_names">Сигурни ли сте, че сте въвели име на всеки учсастник?</string>
+	<string name="msg_select_remove_member">Изберете 1 човек, когото да изтриете!</string>
+	<string name="msg_select_remove_members">Изберете ### човека, които да изтриете!</string>
+	
+	<string name="msg_select_section">Сигурни ли сте, че сте избрали сметка?</string>
+	<string name="msg_select_section_names">Сигурни ли сте, че сте въвели име на всяка сметка?</string>
+	<string name="msg_select_section_unique_names">Сигурни ли сте, че всяка сметка е с различно име?</string>
+	<string name="msg_select_section_amount">Сигурни ли сте, че поне една сметка е със стойност по-голяма от 0?</string>
+	<string name="msg_select_remove_section">Изберете 1 сметка, която да изтриете!</string>
+	<string name="msg_select_remove_sections">Изберете ### сметки, които да изтриете!</string>
+	
+	<string name="msg_reset">Нулиране</string>
+	<string name="msg_reset_members_changes">Всички проценти са рестартирани, поради промяна на участниците!</string>
+	
+	<string name="msg_reset_percentages">Желаете ли да рестартирате процентите?</string>
+	
+	<string name="export_name">Име</string>
+	<string name="export_price">Цена</string>
+	
+	<string name="message_exit_application">Желаете ли да затворите приложението?</string>
+	
+</resources>

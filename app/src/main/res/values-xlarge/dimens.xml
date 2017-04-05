@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- SplashActivity -->
+    <dimen name="loading_text_size">16sp</dimen>
+    
+    <!-- BaseActivity seekbar -->
+    <dimen name="seekbar_height">112dp</dimen>
+    <dimen name="seekbar_text_layout_width">50dp</dimen>
+    <dimen name="seekbar_title_height">40dp</dimen>
+    <dimen name="seekbar_text_size">30sp</dimen>
+    
+    <!-- BaseActivity separator -->       
+    <dimen name="separator_height">2dp</dimen>
+    <dimen name="separator_side_margins">10dp</dimen>
+    
+    <!-- BaseActivity listview -->
+    <dimen name="listview_margin_top">4dp</dimen>
+    <dimen name="listview_side_margin">2dp</dimen>
+    <dimen name="listview_divider_height">4dp</dimen>
+    
+    <!-- BaseActivity row items -->
+    <dimen name="listview_row_height">100dp</dimen>
+    <dimen name="listview_row_image_width">64dp</dimen>
+    <dimen name="listview_row_text_size">40sp</dimen>
+    <dimen name="listview_row_button_width">70dp</dimen> 
+    <dimen name="listview_row_button_margin">2dp</dimen>
+
+    <!-- PercentageActivity spacings -->
+    <dimen name="percentage_horizontal_spacing">6dp</dimen>
+    <dimen name="percentage_vertical_spacing">8dp</dimen>
+    
+    <!-- Percentage row items-->
+    <dimen name="percentage_row_layout_height">160dp</dimen>
+    <dimen name="percentage_row_seekbar_value_width">90dp</dimen>
+    <dimen name="percentage_row_toggle_button_height">60dp</dimen>
+    <dimen name="percentage_row_title_height">40dp</dimen>
+    <dimen name="percentage_row_seekbar_value_max_width">140dp</dimen>
+    <dimen name="percentage_row_text_size">26sp</dimen>
+        
+    <!-- Summary group row items -->
+    <dimen name="summary_group_row_text_size">32sp</dimen>
+    <dimen name="summary_group_row_padding">20dp</dimen>
+    <dimen name="summary_group_row_padding_left">40dp</dimen>
+    
+    <!-- Summary child row items -->
+    <dimen name="summary_child_row_text_size">30sp</dimen>
+    <dimen name="summary_child_row_name_margin_left">60dp</dimen>
+    <dimen name="summary_child_row_name_margin_right">20dp</dimen>         
+    <dimen name="summary_child_row_padding">20dp</dimen>    
+    
+    <!-- Toast -->
+    <dimen name="toast_text_size">36sp</dimen>
+    <dimen name="toast_padding">20dp</dimen>
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Holo">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+     	
+    </style>
+   
+    <style name="txtSeekBarTitle" parent="@android:style/Widget.TextView">
+       <item name="android:layout_width">wrap_content</item>
+       <item name="android:layout_height">@dimen/seekbar_title_height</item>
+       <item name="android:layout_gravity">center_vertical|center_horizontal</item>       
+       <item name="android:textSize">@dimen/seekbar_text_size</item>
+       <item name="android:textColor">#FFFFFF</item>
+       <item name="android:shadowDx">-1</item>
+       <item name="android:shadowDy">-1</item>
+       <item name="android:shadowRadius">1.0</item>
+       <item name="android:shadowColor">#000000</item>
+    </style>
+   
+   <style name="txtSeekBarValue" parent="@android:style/Widget.TextView">
+       <item name="android:layout_width">@dimen/seekbar_text_layout_width</item>
+       <item name="android:layout_height">@dimen/seekbar_height</item>
+       <item name="android:layout_gravity">center_vertical|center_horizontal</item>
+       <item name="android:gravity">center_vertical|center_horizontal</item>
+       <item name="android:layout_alignParentRight">true</item>
+       <item name="android:textSize">@dimen/seekbar_text_size</item>
+       <item name="android:textColor">#FFFFFF</item>
+       <item name="android:shadowDx">-1</item>
+       <item name="android:shadowDy">-1</item>
+       <item name="android:shadowRadius">1.0</item>
+       <item name="android:shadowColor">#000000</item>
+    </style>
+    
+   <style name="txtSummaryGroup" parent="@android:style/Widget.TextView">
+       <item name="android:layout_width">wrap_content</item>
+       <item name="android:layout_height">wrap_content</item>
+       <item name="android:textSize">@dimen/summary_group_row_text_size</item>
+       <item name="android:textColor">#FFFFFF</item>
+       <item name="android:textStyle">bold</item>
+       <item name="android:shadowDx">-1</item>
+       <item name="android:shadowDy">-1</item>
+       <item name="android:shadowRadius">1.0</item>
+       <item name="android:shadowColor">#000000</item>
+       <item name="android:paddingLeft">@dimen/summary_group_row_padding_left</item>
+    </style>
+    
+   <style name="txtSummaryChild" parent="@android:style/Widget.TextView">
+       <item name="android:layout_width">wrap_content</item>
+       <item name="android:layout_height">wrap_content</item>
+       <item name="android:textSize">@dimen/summary_child_row_text_size</item>
+       <item name="android:textColor">#FFFFFF</item>
+       <item name="android:textStyle">bold</item>
+       <item name="android:shadowDx">-1</item>
+       <item name="android:shadowDy">-1</item>
+       <item name="android:shadowRadius">1.0</item>
+       <item name="android:shadowColor">#000000</item>
+    </style>
+   
+</resources>

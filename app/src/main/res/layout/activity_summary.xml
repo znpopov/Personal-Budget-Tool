@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".SummaryActivity" >
+    
+<!--     <com.google.ads.AdView  -->
+<!-- 	    android:id="@+id/ad" -->
+<!-- 	    android:layout_width="match_parent" -->
+<!-- 	    android:layout_height="wrap_content" -->
+<!-- 	    ads:loadAdOnCreate="true" -->
+<!-- 	    ads:adUnitId="ca-app-pub-6253800606310061/4341499239" -->
+<!-- 	    ads:adSize="BANNER" /> -->
+    
+	<ExpandableListView  
+	   	android:id="@+id/activity_summary_listview"
+	    android:layout_width="fill_parent"
+		android:layout_height="fill_parent" />
+
+	</LinearLayout>
