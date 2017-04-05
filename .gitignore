@@ -1,0 +1,11 @@
+/local.properties
+/.idea/libraries
+/build
+/app/build
+cache.properties
+cache.properties.lock
+fileHashes.bin
+fileSnapshots.bin
+outputFileStates.bin
+taskArtifacts.bin
+workspace.xml
