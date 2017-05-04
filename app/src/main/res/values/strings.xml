@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <string name="app_name">SplitMe</string>
+    <string name="app_name">Personal Budget Tool</string>
     
     <string name="loading">Loading. Please, wait&#8230;</string>
     
     <string name="btn_ok">OK</string>
     <string name="btn_yes">YES</string>
     <string name="btn_no">NO</string>
+	<string name="btn_income">Add Income</string>
+	<string name="btn_expense">Add Expense</string>
+
+	<string name="prgr_overall">Overall</string>
+	<string name="prgr_daily">Daily</string>
     
     <string name="hint_name">name</string>
     <string name="hint_bill">bill</string>

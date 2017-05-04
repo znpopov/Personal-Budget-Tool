@@ -1,21 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#FFFFFF"
-    android:orientation="vertical"    
-    tools:context=".MainActivity" >
 
-<!-- 	<com.google.ads.AdView  -->
-<!-- 	    android:id="@+id/ad" -->
-<!-- 	    android:layout_width="match_parent" -->
-<!-- 	    android:layout_height="wrap_content" -->
-<!-- 	    ads:loadAdOnCreate="true" -->
-<!-- 	    ads:adUnitId="ca-app-pub-6253800606310061/1388032830" -->
-<!-- 	    ads:adSize="BANNER" /> -->
+	android:orientation="vertical"
 
+	android:layout_width="fill_parent"
+
+	android:layout_height="fill_parent"
+
+	>
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		<TextView
+
+			android:layout_width="fill_parent"
+
+			android:layout_height="wrap_content"
+
+			android:text="@string/prgr_overall"
+
+			/>
+
+		<ProgressBar
+
+			android:id="@+id/overallBar"
+
+			style="?android:attr/progressBarStyleHorizontal"
+
+			android:layout_width="fill_parent"
+
+			android:layout_height="30dp"
+
+			/>
+
+		<TextView
+
+			android:layout_width="fill_parent"
+
+			android:layout_height="wrap_content"
+
+			android:text="@string/prgr_daily"
+
+			/>
+
+		<ProgressBar
+
+			android:id="@+id/dailyBar"
+
+			style="?android:attr/progressBarStyleHorizontal"
+
+			android:layout_width="fill_parent"
+
+			android:layout_height="30dp"
+
+			/>
+	</LinearLayout>
 
 	<LinearLayout
 		android:orientation="horizontal"
@@ -25,16 +66,19 @@
 		android:layout_marginBottom="20dp">
 
 		<Button
+			android:id="@+id/incomeBtn"
 			android:layout_width="wrap_content"
 			android:layout_height="56dp"
 			android:layout_weight="1"
-			android:text="Btn1"/>
+			android:text="@string/btn_income"/>
 
 		<Button
+			android:id="@+id/expenseBtn"
 			android:layout_width="wrap_content"
 			android:layout_height="56dp"
 			android:layout_weight="1"
-			android:text="Btn 2"/>
+			android:text="@string/btn_expense"/>
 
 	</LinearLayout>
+
 </RelativeLayout>
