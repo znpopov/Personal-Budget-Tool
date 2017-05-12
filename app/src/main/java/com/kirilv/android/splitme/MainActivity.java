@@ -51,7 +51,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 			case R.id.incomeBtn:
 				break;
 			case R.id.categoriesBtn:
-				setTheme();
 				startActivity(new Intent(MainActivity.this, CategoryActivity.class));
 				break;
 			case R.id.transactionBtn:
