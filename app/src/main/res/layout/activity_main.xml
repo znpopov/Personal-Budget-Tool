@@ -1,62 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"    
-    android:orientation="vertical"    
-    tools:context=".MainActivity" >
 
-<!-- 	<com.google.ads.AdView  -->
-<!-- 	    android:id="@+id/ad" -->
-<!-- 	    android:layout_width="match_parent" -->
-<!-- 	    android:layout_height="wrap_content" -->
-<!-- 	    ads:loadAdOnCreate="true" -->
-<!-- 	    ads:adUnitId="ca-app-pub-6253800606310061/1388032830" -->
-<!-- 	    ads:adSize="BANNER" /> -->
-	
-	<TextView
-        android:id="@+id/seekbar_title"
-        style="@style/txtSeekBarTitle" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"	>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/seekbar_height" >
+	<LinearLayout
+		android:id="@+id/navigation"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true">
 
-   	    <TextView
-			android:id="@+id/seekbar_value"
-		    style="@style/txtSeekBarValue" />
-   	     	
-   		<SeekBar 
-	    	android:id="@+id/seekbar"
+		<Button
+			android:id="@+id/budgetBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/btn_budget"/>
+
+		<Button
+			android:id="@+id/categoriesBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/btn_categories"/>
+		<Button
+			android:id="@+id/transactionBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/btn_transactions"/>
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_below="@id/navigation">
+		<TextView
 			android:layout_width="fill_parent"
-			android:layout_height="@dimen/seekbar_height"
-	        android:progressDrawable="@drawable/progress" 
-	        android:layout_toLeftOf="@+id/seekbar_value"
-	        android:thumb="@drawable/ic_thumb"
-	        android:splitTrack="false"
-	        android:max="20" 
-	        android:progress="0" />
-    	     	
-    </RelativeLayout>
+			android:layout_height="wrap_content"
+			android:text="@string/prgr_overall"
+			/>
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/separator_height"
-        android:layout_marginTop="0dp"
-        android:layout_marginLeft="@dimen/separator_side_margins"
-    	android:layout_marginRight="@dimen/separator_side_margins"	        
-        android:background="#FFFFFF" />
+		<ProgressBar
+			android:id="@+id/overallBar"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="30dp"
+			/>
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginLeft="@dimen/listview_side_margin"
-        android:layout_marginRight="@dimen/listview_side_margin"
-        android:layout_marginTop="@dimen/listview_margin_top"
-        android:divider="#AA3187a3"
-        android:descendantFocusability="beforeDescendants"
-        android:dividerHeight="@dimen/listview_divider_height" />
-	
-</LinearLayout>
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/prgr_daily"
+			/>
+
+		<ProgressBar
+			android:id="@+id/dailyBar"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="30dp"
+			/>
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="20dp">
+
+		<Button
+			android:id="@+id/incomeBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/btn_income"/>
+
+		<Button
+			android:id="@+id/expenseBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/btn_expense"/>
+
+	</LinearLayout>
+
+</RelativeLayout>
