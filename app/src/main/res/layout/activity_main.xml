@@ -1,60 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
 	android:orientation="vertical"
-
 	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"	>
 
-	android:layout_height="fill_parent"
+	<LinearLayout
+		android:id="@+id/navigation"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true">
 
-	>
+		<Button
+			android:id="@+id/budgetBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/btn_budget"/>
+
+		<Button
+			android:id="@+id/categoriesBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/btn_categories"/>
+		<Button
+			android:id="@+id/transactionBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/btn_transactions"/>
+	</LinearLayout>
+
 	<LinearLayout
 		android:orientation="vertical"
 		android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
+		android:layout_height="fill_parent"
+		android:layout_below="@id/navigation">
 		<TextView
-
 			android:layout_width="fill_parent"
-
 			android:layout_height="wrap_content"
-
 			android:text="@string/prgr_overall"
-
 			/>
 
 		<ProgressBar
-
 			android:id="@+id/overallBar"
-
 			style="?android:attr/progressBarStyleHorizontal"
-
 			android:layout_width="fill_parent"
-
 			android:layout_height="30dp"
-
 			/>
 
 		<TextView
-
 			android:layout_width="fill_parent"
-
 			android:layout_height="wrap_content"
-
 			android:text="@string/prgr_daily"
-
 			/>
 
 		<ProgressBar
-
 			android:id="@+id/dailyBar"
-
 			style="?android:attr/progressBarStyleHorizontal"
-
 			android:layout_width="fill_parent"
-
 			android:layout_height="30dp"
-
 			/>
 	</LinearLayout>
 

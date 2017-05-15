@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:id="@+id/navigation">
+
+        <Button
+            android:layout_height="56dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/budgetBtn"
+            android:text="@string/btn_budget"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_height="56dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/categoriesBtn"
+            android:text="@string/btn_categories"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_height="56dp"
+            android:layout_width="wrap_content"
+            android:id="@+id/transactionBtn"
+            android:text="@string/btn_transactions"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/navigation">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:text="@string/prgr_overall"/>
+
+        <ProgressBar
+            android:layout_height="30dp"
+            android:layout_width="fill_parent"
+            android:id="@+id/overallBar"
+            style="?android:attr/progressBarStyleHorizontal"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:text="@string/prgr_food"/>
+
+        <ProgressBar
+            android:layout_height="30dp"
+            android:layout_width="fill_parent"
+            android:id="@+id/dailyBar"
+            style="?android:attr/progressBarStyleHorizontal"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:text="@string/prgr_clothing"/>
+
+        <ProgressBar
+            android:layout_height="30dp"
+            android:layout_width="fill_parent"
+            android:id="@+id/dailyBar"
+            style="?android:attr/progressBarStyleHorizontal"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:text="@string/prgr_fuel"/>
+
+        <ProgressBar
+            android:layout_height="30dp"
+            android:layout_width="fill_parent"
+            android:id="@+id/dailyBar"
+            style="?android:attr/progressBarStyleHorizontal"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:text="@string/prgr_drinks"/>
+
+        <ProgressBar
+            android:layout_height="30dp"
+            android:layout_width="fill_parent"
+            android:id="@+id/dailyBar"
+            style="?android:attr/progressBarStyleHorizontal"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_height="66dp"
+        android:layout_width="66dp"
+        android:id="@+id/addButton"
+        android:src="@drawable/ic_action_add"
+        app:backgroundTint="#239384"
+        app:fabSize="normal"
+        android:layout_marginBottom="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
