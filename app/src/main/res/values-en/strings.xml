@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <string name="app_name">SplitMe</string>
+    <string name="app_name">Personal Budget Tool</string>
     
     <string name="loading">Loading. Please, wait&#8230;</string>
     
