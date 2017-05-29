@@ -1,19 +1,36 @@
 package com.kirilv.android.splitme;
 
 
+//import android.app.Activity;
 import android.app.Activity;
+import android.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
+import android.app.AlertDialog;
+//import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 
+import android.view.ViewGroup;
 import android.widget.Button;
 
+import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 
+public class MainActivity extends Activity implements View.OnClickListener, AddExpenseDialogFragment.AddExpenseDialogListener {
 
-public class MainActivity extends Activity implements View.OnClickListener {
+	private Button home;
+
+	private Button budget;
+
+	private Button categories;
+
+	private Button transactions;
 
 	private ProgressBar overallBar;
 
@@ -36,19 +53,43 @@ public class MainActivity extends Activity implements View.OnClickListener {
 		overallBar.setProgress(50);
 
 		dailyBar = (ProgressBar) findViewById(R.id.dailyBar);
-
 		addIncome = (Button) findViewById(R.id.incomeBtn);
 		addExpense = (Button) findViewById(R.id.expenseBtn);
+		addExpense.setOnClickListener(this);
 
-		findViewById(R.id.categoriesBtn).setOnClickListener(this);
+		home = (Button) findViewById(R.id.homeBtn);
+		home.setOnClickListener(this);
+
+		budget = (Button) findViewById(R.id.budgetBtn);
+		budget.setOnClickListener(this);
+
+		categories = (Button) findViewById(R.id.categoriesBtn);
+		categories.setOnClickListener(this);
+
+		transactions = (Button) findViewById(R.id.transactionBtn);
+		transactions.setOnClickListener(this);
 	}
+
+	public void showExpenceDialog() {
+		// Create an instance of the dialog fragment and show it
+		DialogFragment dialog = new AddExpenseDialogFragment();
+		dialog.show(getFragmentManager(), "Expense dialog");
+	}
+
 
 	@Override
 	public final void onClick(final View v) {
 		switch(v.getId()) {
+			case R.id.homeBtn:
+				startActivity(new Intent(MainActivity.this, MainActivity.class));
+				break;
 			case R.id.expenseBtn:
+				showExpenceDialog();
 				break;
 			case R.id.incomeBtn:
+				break;
+			case R.id.budgetBtn:
+				startActivity(new Intent(MainActivity.this, MainActivity.class));
 				break;
 			case R.id.categoriesBtn:
 				startActivity(new Intent(MainActivity.this, CategoryActivity.class));
@@ -59,5 +100,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
 				break;
 			default: break;
 		};
+	}
+
+	@Override
+	public void onExpenseDialogPositiveClick(DialogFragment dialog) {
+		Log.d("CREATION", "Add Expense");
+
+	}
+
+	@Override
+	public void onExpenseDialogNegativeClick(DialogFragment dialog) {
+		Log.d("CREATION", "Cancel Expense");
 	}
 }

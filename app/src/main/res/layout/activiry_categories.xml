@@ -16,6 +16,13 @@
         android:id="@+id/navigation">
 
         <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="@string/btn_home"/>
+
+        <Button
             android:layout_height="56dp"
             android:layout_width="wrap_content"
             android:id="@+id/budgetBtn"

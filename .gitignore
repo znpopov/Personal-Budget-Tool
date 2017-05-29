@@ -9,3 +9,4 @@ fileSnapshots.bin
 outputFileStates.bin
 taskArtifacts.bin
 workspace.xml
+.gradle

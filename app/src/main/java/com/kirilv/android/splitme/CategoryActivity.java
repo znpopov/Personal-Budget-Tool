@@ -1,5 +1,6 @@
 package com.kirilv.android.splitme;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.RelativeLayout;
  */
 
 public class CategoryActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private Button home;
 
     private Button budget;
 
@@ -27,6 +30,9 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         setContentView(this.rootLayout);
         this.show();
 
+        home = (Button) findViewById(R.id.homeBtn);
+        home.setOnClickListener(this);
+
         budget = (Button) findViewById(R.id.budgetBtn);
         budget.setOnClickListener(this);
 
@@ -42,7 +48,11 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public final void onClick(final View v) {
         switch(v.getId()) {
+            case R.id.homeBtn:
+                startActivity(new Intent(CategoryActivity.this, MainActivity.class));
+                break;
             case R.id.budgetBtn:
+                startActivity(new Intent(CategoryActivity.this, MainActivity.class));
                 break;
             case R.id.categoriesBtn:
                 break;
