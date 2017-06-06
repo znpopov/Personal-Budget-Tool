@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class CategoryDBHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "Category.db";
+    private static final String DATABASE_NAME = "Categories.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String CATEGORY_TABLE_NAME = "Category";
+    private static final String CATEGORY_TABLE_NAME = "Categories";
     private static final String CATEGORY_COLUMN_ID = "_id";
     private static final String CATEGORY_COLUMN_NAME = "name";
     private static final String CATEGORY_COLUMN_DESCRIPTION = "description";
@@ -32,7 +32,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
                         CATEGORY_COLUMN_ID + " INTEGER PRIMARY KEY, " +
                         CATEGORY_COLUMN_NAME + " TEXT, " +
                         CATEGORY_COLUMN_DESCRIPTION + " TEXT, " +
-                        CATEGORY_COLUMN_TYPE_ID + " TEXT)"
+                        CATEGORY_COLUMN_TYPE_ID + " INTEGER)"
         );
     }
 
@@ -56,7 +56,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
 
     boolean updateCategory(Category category) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.update(CATEGORY_TABLE_NAME, setContentValues(category), CATEGORY_COLUMN_ID + " = ? ", new String[]{category.getId()});
+        db.update(CATEGORY_TABLE_NAME, setContentValues(category), CATEGORY_COLUMN_ID + " = ? ", new String[]{Integer.toString(category.getId())});
         db.close();
         return true;
     }
@@ -102,10 +102,10 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
     }
 
     private Category initializeCategory(Cursor c) {
-        String id = c.getString(c.getColumnIndex(CATEGORY_COLUMN_ID));
+        int id = c.getInt(c.getColumnIndex(CATEGORY_COLUMN_ID));
         String name = c.getString(c.getColumnIndex(CATEGORY_COLUMN_NAME));
         String description = c.getString(c.getColumnIndex(CATEGORY_COLUMN_DESCRIPTION));
-        String typeId = c.getString(c.getColumnIndex(CATEGORY_COLUMN_TYPE_ID));
+        int typeId = c.getInt(c.getColumnIndex(CATEGORY_COLUMN_TYPE_ID));
         return new Category(id, name, description, typeId);
     }
 

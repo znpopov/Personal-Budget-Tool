@@ -2,25 +2,25 @@ package com.kirilv.android.splitme.model;
 
 public class Category {
 
-    private String id;
+    private int id;
     private String name;
-    private String typeId;
+    private int typeId;
     private String description;
 
-    public Category(String id, String name, String description, String typeId) {
+    public Category(int id, String name, String description, int typeId) {
         this.id = id;
         this.name = name;
         this.typeId = typeId;
         this.description = description;
     }
 
-    public Category(String name, String description, String typeId) {
+    public Category(String name, String description, int typeId) {
         this.name = name;
         this.typeId = typeId;
         this.description = description;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -28,7 +28,7 @@ public class Category {
         return name;
     }
 
-    public String getType() {
+    public int getType() {
         return typeId;
     }
 
