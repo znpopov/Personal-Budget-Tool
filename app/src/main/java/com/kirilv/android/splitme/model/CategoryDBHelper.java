@@ -34,6 +34,19 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
                         CATEGORY_COLUMN_DESCRIPTION + " TEXT, " +
                         CATEGORY_COLUMN_TYPE_ID + " INTEGER)"
         );
+        addDefaultValues();
+    }
+
+    private void addDefaultValues(){
+        Category food = new Category("Food", "Expenses for food", 1);
+        Category drinks = new Category("Drinks", "Expenses for drinks", 1);
+        Category rent = new Category("House rent", "Expenses for house rent", 1);
+        Category salary = new Category("Salary", "Incomes from salary", 2);
+        Category[] categories = new Category[] {food, drinks, rent, salary};
+
+        for (Category category : categories) {
+            insertCategory(category);
+        }
     }
 
     @Override

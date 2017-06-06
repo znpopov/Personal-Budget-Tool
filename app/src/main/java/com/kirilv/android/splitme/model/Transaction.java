@@ -3,7 +3,7 @@ package com.kirilv.android.splitme.model;
 public class Transaction {
     private int id;
     private int categoryId;
-    private int typeId;
+    private int typeId; // 1 for Expenses, 2 for Incomes and 3 for Savings
     private double amount;
     private long createdAt;
 
