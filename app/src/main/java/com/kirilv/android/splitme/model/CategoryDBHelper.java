@@ -34,10 +34,10 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
                         CATEGORY_COLUMN_DESCRIPTION + " TEXT, " +
                         CATEGORY_COLUMN_TYPE_ID + " INTEGER)"
         );
-        addDefaultValues();
+        addDefaultValues(db);
     }
 
-    private void addDefaultValues(){
+    private void addDefaultValues(SQLiteDatabase db){
         Category food = new Category("Food", "Expenses for food", 1);
         Category drinks = new Category("Drinks", "Expenses for drinks", 1);
         Category rent = new Category("House rent", "Expenses for house rent", 1);
@@ -45,7 +45,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
         Category[] categories = new Category[] {food, drinks, rent, salary};
 
         for (Category category : categories) {
-            insertCategory(category);
+            insertCategory(category, db);
         }
     }
 
@@ -124,7 +124,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
 
     private ContentValues setContentValues(Category category) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(CATEGORY_COLUMN_ID, category.getId());
+//        contentValues.put(CATEGORY_COLUMN_ID, category.getId());
         contentValues.put(CATEGORY_COLUMN_NAME, category.getName());
         contentValues.put(CATEGORY_COLUMN_TYPE_ID, category.getType());
         contentValues.put(CATEGORY_COLUMN_DESCRIPTION, category.getDescription());

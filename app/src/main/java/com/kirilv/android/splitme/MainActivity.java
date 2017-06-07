@@ -97,12 +97,9 @@ public class MainActivity extends Activity implements View.OnClickListener, AddE
                 break;
             case R.id.transactionBtn:
                 break;
-            case R.id.addButton:
-                break;
             default:
                 break;
         }
-        ;
     }
 
     @Override

@@ -1,81 +1,43 @@
 package com.kirilv.android.splitme;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-/**
- * Created by user on 11.05.17.
- */
+import com.kirilv.android.splitme.model.Category;
 
-public class CategoryActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-    private Button home;
-
-    private Button budget;
-
-    private Button categories;
-
-    private Button transactions;
-
-    private RelativeLayout rootLayout;
+public class CategoryActivity extends Activity {
+    private RecyclerView mRecyclerView;
+    private CategoryAdapter categoryAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.rootLayout = (RelativeLayout) getLayoutInflater().inflate(R.layout.activity_categories, null);
-        setContentView(this.rootLayout);
-        this.show();
+        setContentView(R.layout.activity_categories);
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
 
-        home = (Button) findViewById(R.id.homeBtn);
-        home.setOnClickListener(this);
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
 
-        budget = (Button) findViewById(R.id.budgetBtn);
-        budget.setOnClickListener(this);
+        // specify an adapter (see also next example)
+        ArrayList<Category> categoriesList = new ArrayList<>(BudgetApplication.getInstance().getCategories().values());
 
-        categories = (Button) findViewById(R.id.categoriesBtn);
-        categories.setOnClickListener(this);
-
-        transactions = (Button) findViewById(R.id.transactionBtn);
-        transactions.setOnClickListener(this);
-
-        findViewById(R.id.addButton).setOnClickListener(this);
-    }
-
-    @Override
-    public final void onClick(final View v) {
-        switch(v.getId()) {
-            case R.id.homeBtn:
-                startActivity(new Intent(CategoryActivity.this, MainActivity.class));
-                break;
-            case R.id.budgetBtn:
-                startActivity(new Intent(CategoryActivity.this, MainActivity.class));
-                break;
-            case R.id.categoriesBtn:
-                break;
-            case R.id.transactionBtn:
-                break;
-            case R.id.addButton:
-                break;
-            default: break;
-        }
-    }
-
-    public final void hide() {
-        for (int i = this.rootLayout.getChildCount();  i-- > 0; ) {
-            if (this.rootLayout.getChildAt(i).getId() != R.id.navigation)
-                this.rootLayout.getChildAt(i).setVisibility(View.GONE);
-        }
-    }
-
-    public final void show() {
-        for (int i = this.rootLayout.getChildCount();  i-- > 0; ) {
-            if (this.rootLayout.getChildAt(i).getId() != R.id.navigation)
-                this.rootLayout.getChildAt(i).setVisibility(View.VISIBLE);
-        }
+        categoryAdapter = new CategoryAdapter(categoriesList);
+        mRecyclerView.setAdapter(categoryAdapter);
     }
 
 }
