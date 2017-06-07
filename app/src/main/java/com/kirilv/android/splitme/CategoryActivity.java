@@ -26,7 +26,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        this.rootLayout = (RelativeLayout) getLayoutInflater().inflate(R.layout.activiry_categories, null);
+        this.rootLayout = (RelativeLayout) getLayoutInflater().inflate(R.layout.activity_categories, null);
         setContentView(this.rootLayout);
         this.show();
 

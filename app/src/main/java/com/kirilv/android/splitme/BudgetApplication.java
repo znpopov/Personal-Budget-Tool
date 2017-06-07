@@ -15,14 +15,14 @@ public class BudgetApplication extends Application
 
     private HashMap<Integer, Category> categories;
     private HashMap<Integer, Transaction> transactions;
-    private CategoryDBHelper categoryDBHelper = new CategoryDBHelper(this);
-    private TransactionDBHelper transactionDBHelper = new TransactionDBHelper(this);
+    private CategoryDBHelper categoryDBHelper;
+    private TransactionDBHelper transactionDBHelper;
 
     public static BudgetApplication getInstance()
     {
-        if(ourInstance == null){
-            ourInstance = new BudgetApplication();
-        }
+//        if(ourInstance == null){
+//            ourInstance = new BudgetApplication();
+//        }
         return ourInstance;
     }
 
@@ -38,6 +38,9 @@ public class BudgetApplication extends Application
     public void onCreate() {
         super.onCreate();
         ourInstance = this;
+        categoryDBHelper = new CategoryDBHelper(this);
+        transactionDBHelper = new TransactionDBHelper(this);
+
         categories = new HashMap<>();
         transactions = new HashMap<>();
 
