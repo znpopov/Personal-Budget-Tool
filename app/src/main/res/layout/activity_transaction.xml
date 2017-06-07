@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"	>
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+
+
+		<EditText
+			android:id="@+id/transactionName"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="16dp"
+			android:layout_marginLeft="4dp"
+			android:layout_marginRight="4dp"
+			android:layout_marginBottom="4dp"
+			android:hint="@string/hint_transaction_name"/>
+
+		<EditText
+			android:id="@+id/transactionValue"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="numberSigned"
+			android:layout_marginTop="16dp"
+			android:layout_marginLeft="4dp"
+			android:layout_marginRight="4dp"
+			android:layout_marginBottom="4dp"
+			android:hint="@string/hint_transaction_value"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/choose_category"
+			/>
+
+		<Spinner
+			android:id="@+id/categories_spinner"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:drawSelectorOnTop="true"
+			android:entries="@array/categories_array"/>
+
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="20dp">
+
+		<Button
+			android:id="@+id/saveBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/btn_save"/>
+
+		<Button
+			android:id="@+id/cancelBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="56dp"
+			android:layout_weight="1"
+			android:text="@string/cancel"/>
+
+	</LinearLayout>
+
+</RelativeLayout>

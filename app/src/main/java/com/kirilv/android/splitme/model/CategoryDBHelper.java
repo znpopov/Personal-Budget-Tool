@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -56,7 +57,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertCategory(Category category) {
-        SQLiteDatabase db = getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         insertCategory(category, db);
         db.close();
         return true;
@@ -77,7 +78,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
     public Category getCategory(String name) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT * FROM " + CATEGORY_TABLE_NAME + " WHERE " +
-                CATEGORY_COLUMN_NAME + " = " + name;
+                CATEGORY_COLUMN_NAME + " = '" + name + "'";
         Cursor c = db.rawQuery(selectQuery, null);
         c.moveToFirst();
         db.close();
@@ -97,7 +98,10 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
     public ArrayList<Category> getAllCategories() {
         ArrayList<Category> categories = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor c = db.rawQuery("SELECT * FROM " + CATEGORY_TABLE_NAME, null);
+        String selectQuery = "SELECT * FROM " + CATEGORY_TABLE_NAME;
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
         if (c != null) {
             while (c.moveToNext()) {
                 categories.add(initializeCategory(c));
@@ -119,6 +123,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
         String name = c.getString(c.getColumnIndex(CATEGORY_COLUMN_NAME));
         String description = c.getString(c.getColumnIndex(CATEGORY_COLUMN_DESCRIPTION));
         int typeId = c.getInt(c.getColumnIndex(CATEGORY_COLUMN_TYPE_ID));
+        Log.d("CREATION", "Transaction type111: "+name);
         return new Category(id, name, description, typeId);
     }
 
