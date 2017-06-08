@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.kirilv.android.splitme.model.Category;
+import com.kirilv.android.splitme.model.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +87,20 @@ public class TransactionActivity extends Activity implements View.OnClickListene
     public final void onClick(final View v) {
         switch (v.getId()) {
             case R.id.saveBtn:
-                Log.d("CREATION", "Add Expense {name:"+name.getText()+" value:"+value.getText()+"}");
+                Log.d("CREATION", "Add Expense {name:"+name.getText()+" value:"+value.getText()+" category:"+category.getSelectedItem().toString()+"}");
+                //insertTransaction
+
+                Transaction transaction = new Transaction(
+                        name.getText().toString(),
+                        BudgetApplication.getInstance().getCategoryDBHelper().getCategory(category.getSelectedItem().toString()).getId(),
+                        transactionType,
+                        new Double(value.getText().toString())
+                );
+                BudgetApplication.getInstance().getTransactionDBHelper().insertTransaction(transaction);
+                ArrayList<Transaction> transactions = BudgetApplication.getInstance().getTransactionDBHelper().getAllTransaction();
+                for(Transaction tempTransaction : transactions){
+                    Log.d("CREATION", "All transactions: [" + tempTransaction.getId() + "]:" + tempTransaction.getName() + " = " + tempTransaction.getAmount());
+                }
                 startActivity(new Intent(TransactionActivity.this, MainActivity.class));
                 break;
             case R.id.cancelBtn:

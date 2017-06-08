@@ -55,4 +55,12 @@ public class BudgetApplication extends Application
 
         int transactionSize = transactions.size();
     }
+
+    public CategoryDBHelper getCategoryDBHelper() {
+        return categoryDBHelper;
+    }
+
+    public TransactionDBHelper getTransactionDBHelper() {
+        return transactionDBHelper;
+    }
 }

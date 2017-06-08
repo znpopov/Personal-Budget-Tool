@@ -11,9 +11,10 @@ import java.util.ArrayList;
 public class TransactionDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Transactions.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String TRANSACTION_TABLE_NAME = "Transactions";
     private static final String TRANSACTION_COLUMN_ID = "_id";
+    private static final String TRANSACTION_COLUMN_NAME_ID = "name";
     private static final String TRANSACTION_COLUMN_CATEGORY_ID = "categoryId";
     private static final String TRANSACTION_COLUMN_TYPE_ID = "typeId";
     private static final String TRANSACTION_COLUMN_AMOUNT = "amount";
@@ -31,6 +32,7 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TRANSACTION_TABLE_NAME + "(" +
                         TRANSACTION_COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                        TRANSACTION_COLUMN_NAME_ID + " TEXT, " +
                         TRANSACTION_COLUMN_CATEGORY_ID + " INTEGER, " +
                         TRANSACTION_COLUMN_TYPE_ID + " INTEGER, " +
                         TRANSACTION_COLUMN_AMOUNT + " DOUBLE, " +
@@ -96,16 +98,17 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
 
     private Transaction initializeTransaction(Cursor c) {
         int id = c.getInt(c.getColumnIndex(TRANSACTION_COLUMN_ID));
+        String name = c.getString(c.getColumnIndex(TRANSACTION_COLUMN_NAME_ID));
         int categoryId = c.getInt(c.getColumnIndex(TRANSACTION_COLUMN_CATEGORY_ID));
         int typeId = c.getInt(c.getColumnIndex(TRANSACTION_COLUMN_TYPE_ID));
         double amount = c.getDouble(c.getColumnIndex(TRANSACTION_COLUMN_AMOUNT));
         long createdAt = c.getLong(c.getColumnIndex(TRANSACTION_COLUMN_CREATED_AT));
-        return new Transaction(id, categoryId, typeId, amount);
+        return new Transaction(id, name, categoryId, typeId, amount);
     }
 
     private ContentValues setContentValues(Transaction transaction) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(TRANSACTION_COLUMN_ID, transaction.getId());
+        contentValues.put(TRANSACTION_COLUMN_NAME_ID, transaction.getName());
         contentValues.put(TRANSACTION_COLUMN_CATEGORY_ID, transaction.getCategoryId());
         contentValues.put(TRANSACTION_COLUMN_TYPE_ID, transaction.getTypeId());
         contentValues.put(TRANSACTION_COLUMN_AMOUNT, transaction.getAmount());
