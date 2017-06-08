@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class CategoryDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Categories.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String CATEGORY_TABLE_NAME = "Categories";
     private static final String CATEGORY_COLUMN_ID = "_id";
     private static final String CATEGORY_COLUMN_NAME = "name";
@@ -30,23 +30,23 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + CATEGORY_TABLE_NAME + "(" +
-                        CATEGORY_COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                        CATEGORY_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         CATEGORY_COLUMN_NAME + " TEXT, " +
                         CATEGORY_COLUMN_DESCRIPTION + " TEXT, " +
                         CATEGORY_COLUMN_TYPE_ID + " INTEGER)"
         );
-        addDefaultValues();
+        addDefaultValues(db);
     }
 
-    private void addDefaultValues(){
+    private void addDefaultValues(SQLiteDatabase db){
         Category food = new Category("Food", "Expenses for food", 1);
         Category drinks = new Category("Drinks", "Expenses for drinks", 1);
         Category rent = new Category("House rent", "Expenses for house rent", 1);
         Category salary = new Category("Salary", "Incomes from salary", 2);
-        Category[] categories = new Category[] {food, drinks, rent, salary};
+        Category[] categories =  { food, drinks,  rent, salary};
 
         for (Category category : categories) {
-            insertCategory(category);
+            insertCategory(category,db);
         }
     }
 
@@ -70,7 +70,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
 
     boolean updateCategory(Category category) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.update(CATEGORY_TABLE_NAME, setContentValues(category), CATEGORY_COLUMN_ID + " = ? ", new String[]{Integer.toString(category.getId())});
+        db.update(CATEGORY_TABLE_NAME, setContentValues(category), CATEGORY_COLUMN_ID + " = ? ", new String[]{Long.toString(category.getId())});
         db.close();
         return true;
     }
@@ -101,7 +101,6 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
         String selectQuery = "SELECT * FROM " + CATEGORY_TABLE_NAME;
         Cursor c = db.rawQuery(selectQuery, null);
 
-
         if (c != null) {
             while (c.moveToNext()) {
                 categories.add(initializeCategory(c));
@@ -119,17 +118,15 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
     }
 
     private Category initializeCategory(Cursor c) {
-        int id = c.getInt(c.getColumnIndex(CATEGORY_COLUMN_ID));
+        Long id = c.getLong(c.getColumnIndex(CATEGORY_COLUMN_ID));
         String name = c.getString(c.getColumnIndex(CATEGORY_COLUMN_NAME));
         String description = c.getString(c.getColumnIndex(CATEGORY_COLUMN_DESCRIPTION));
         int typeId = c.getInt(c.getColumnIndex(CATEGORY_COLUMN_TYPE_ID));
-        Log.d("CREATION", "Transaction type111: "+name);
         return new Category(id, name, description, typeId);
     }
 
     private ContentValues setContentValues(Category category) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(CATEGORY_COLUMN_ID, category.getId());
         contentValues.put(CATEGORY_COLUMN_NAME, category.getName());
         contentValues.put(CATEGORY_COLUMN_TYPE_ID, category.getType());
         contentValues.put(CATEGORY_COLUMN_DESCRIPTION, category.getDescription());

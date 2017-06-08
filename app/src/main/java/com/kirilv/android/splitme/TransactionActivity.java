@@ -11,6 +11,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.kirilv.android.splitme.model.Category;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by stefann on 6/7/2017.
  */
@@ -59,18 +63,21 @@ public class TransactionActivity extends Activity implements View.OnClickListene
 
         Category[] categories = BudgetApplication.getInstance().getCategories().values().toArray(new Category[0]);
 
-        String[] categoryArray = new String[0];
+
+        List<String> categoryList = new ArrayList<String>();
+
 
         for(Category category : categories){
+
             if(category.getType() == transactionType) {
-                categoryArray[category.getId()] = category.getName();
+                categoryList.add(category.getName());
             }
 
         }
 
         category  = (Spinner) findViewById(R.id.categories_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, categoryArray);
+                android.R.layout.simple_spinner_item, categoryList.toArray(new String[categoryList.size()]));
         category.setAdapter(adapter);
 
     }
@@ -83,7 +90,7 @@ public class TransactionActivity extends Activity implements View.OnClickListene
                 startActivity(new Intent(TransactionActivity.this, MainActivity.class));
                 break;
             case R.id.cancelBtn:
-                Log.d("CREATION", "Cancel Expense");
+                Log.d("CREATION", "Cancel " + getIntent().getExtras().getString("type"));
                 startActivity(new Intent(TransactionActivity.this, MainActivity.class));
                 break;
             default:

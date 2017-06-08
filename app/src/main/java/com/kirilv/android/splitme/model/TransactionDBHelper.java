@@ -59,7 +59,7 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
     boolean updateTransaction(Transaction transaction) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.update(TRANSACTION_TABLE_NAME, setContentValues(transaction), TRANSACTION_COLUMN_ID + " = ? ", new
-                String[]{Integer.toString(transaction.getId())});
+                String[]{Long.toString(transaction.getId())});
         db.close();
         return true;
     }

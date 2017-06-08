@@ -1,7 +1,7 @@
 package com.kirilv.android.splitme.model;
 
 public class Transaction {
-    private int id;
+    private long id;
     private int categoryId;
     private int typeId; // 1 for Expenses, 2 for Incomes and 3 for Savings
     private double amount;
@@ -14,14 +14,14 @@ public class Transaction {
         createdAt = System.currentTimeMillis()/1000L;
     }
 
-    public Transaction(int id, int categoryId, int typeId, double amount) {
+    public Transaction(long id, int categoryId, int typeId, double amount) {
         this.id = id;
         this.typeId = typeId;
         this.amount = amount;
         createdAt = System.currentTimeMillis()/1000L;
     }
 
-    public int getId(){
+    public long getId(){
         return id;
     }
 

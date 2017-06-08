@@ -2,12 +2,12 @@ package com.kirilv.android.splitme.model;
 
 public class Category {
 
-    private int id;
+    private long id;
     private String name;
     private int typeId;
     private String description;
 
-    public Category(int id, String name, String description, int typeId) {
+    public Category(long id, String name, String description, int typeId) {
         this.id = id;
         this.name = name;
         this.typeId = typeId;
@@ -20,7 +20,7 @@ public class Category {
         this.description = description;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
