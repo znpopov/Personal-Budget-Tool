@@ -1,6 +1,7 @@
 package com.kirilv.android.splitme;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.kirilv.android.splitme.model.Category;
 import com.kirilv.android.splitme.model.CategoryDBHelper;
@@ -13,8 +14,8 @@ public class BudgetApplication extends Application
 {
     private static BudgetApplication ourInstance;
 
-    private HashMap<Integer, Category> categories;
-    private HashMap<Integer, Transaction> transactions;
+    private HashMap<Long, Category> categories;
+    private HashMap<Long, Transaction> transactions;
     private CategoryDBHelper categoryDBHelper;
     private TransactionDBHelper transactionDBHelper;
 
@@ -26,11 +27,11 @@ public class BudgetApplication extends Application
         return ourInstance;
     }
 
-    public HashMap<Integer, Category> getCategories(){
+    public HashMap<Long, Category> getCategories(){
         return categories;
     }
 
-    public HashMap<Integer, Transaction> getTransactions(){
+    public HashMap<Long, Transaction> getTransactions(){
         return transactions;
     }
 
@@ -53,5 +54,13 @@ public class BudgetApplication extends Application
         }
 
         int transactionSize = transactions.size();
+    }
+
+    public CategoryDBHelper getCategoryDBHelper() {
+        return categoryDBHelper;
+    }
+
+    public TransactionDBHelper getTransactionDBHelper() {
+        return transactionDBHelper;
     }
 }

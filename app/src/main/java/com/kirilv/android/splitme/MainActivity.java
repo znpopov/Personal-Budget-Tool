@@ -5,22 +5,16 @@ package com.kirilv.android.splitme;
 
 import android.app.Activity;
 import android.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
-import android.app.AlertDialog;
 //import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 
-import android.view.ViewGroup;
 import android.widget.Button;
 
-import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 
 public class MainActivity extends Activity implements View.OnClickListener, AddExpenseDialogFragment.AddExpenseDialogListener {
@@ -55,6 +49,7 @@ public class MainActivity extends Activity implements View.OnClickListener, AddE
 
         dailyBar = (ProgressBar) findViewById(R.id.dailyBar);
         addIncome = (Button) findViewById(R.id.incomeBtn);
+        addIncome.setOnClickListener(this);
         addExpense = (Button) findViewById(R.id.expenseBtn);
         addExpense.setOnClickListener(this);
 
@@ -80,14 +75,21 @@ public class MainActivity extends Activity implements View.OnClickListener, AddE
 
     @Override
     public final void onClick(final View v) {
+        Intent transactionIntent = new Intent(MainActivity.this, TransactionActivity.class);
+        Bundle b = new Bundle();
         switch (v.getId()) {
             case R.id.homeBtn:
                 startActivity(new Intent(MainActivity.this, MainActivity.class));
                 break;
             case R.id.expenseBtn:
-                showExpenceDialog();
+                b.putString("type", "expense");
+                transactionIntent.putExtras(b);
+                startActivity(transactionIntent);
                 break;
             case R.id.incomeBtn:
+                b.putString("type", "income");
+                transactionIntent.putExtras(b);
+                startActivity(transactionIntent);
                 break;
             case R.id.budgetBtn:
                 startActivity(new Intent(MainActivity.this, MainActivity.class));
