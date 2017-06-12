@@ -23,7 +23,7 @@ public class BudgetApplication extends Application {
         return ourInstance;
     }
 
-    public HashMap<Long, Category> getCategories(){
+    public HashMap<Long, Category> getCategories() {
         return categories;
     }
 
@@ -35,6 +35,7 @@ public class BudgetApplication extends Application {
     public HashMap<Long, Double> getCategoryAmounts() {
         return categoryAmounts;
     }
+
     @Override
     public void onCreate() {
         super.onCreate();

@@ -16,11 +16,7 @@ import com.kirilv.android.splitme.model.Transaction;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by stefann on 6/7/2017.
- */
-
-public class TransactionActivity extends Activity implements View.OnClickListener{
+public class TransactionActivity extends Activity implements View.OnClickListener {
 
     private Integer transactionType;
 
@@ -52,11 +48,11 @@ public class TransactionActivity extends Activity implements View.OnClickListene
 
         Bundle b = getIntent().getExtras();
 
-        Log.d("CREATION", "Transaction type: "+b.getString("type"));
+        Log.d("CREATION", "Transaction type: " + b.getString("type"));
 
-        if(b.getString("type").equals("expense")){
+        if (b.getString("type").equals("expense")) {
             transactionType = 1;
-        } else if(b.getString("type").equals("income")){
+        } else if (b.getString("type").equals("income")) {
             transactionType = 2;
         } else {
             //throw new Exception("No Transaction Type");
@@ -68,15 +64,15 @@ public class TransactionActivity extends Activity implements View.OnClickListene
         List<String> categoryList = new ArrayList<String>();
 
 
-        for(Category category : categories){
+        for (Category category : categories) {
 
-            if(category.getType() == transactionType) {
+            if (category.getType() == transactionType) {
                 categoryList.add(category.getName());
             }
 
         }
 
-        category  = (Spinner) findViewById(R.id.categories_spinner);
+        category = (Spinner) findViewById(R.id.categories_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, categoryList.toArray(new String[categoryList.size()]));
         category.setAdapter(adapter);
@@ -87,7 +83,7 @@ public class TransactionActivity extends Activity implements View.OnClickListene
     public final void onClick(final View v) {
         switch (v.getId()) {
             case R.id.saveBtn:
-                Log.d("CREATION", "Add Expense {name:"+name.getText()+" value:"+value.getText()+" category:"+category.getSelectedItem().toString()+"}");
+                Log.d("CREATION", "Add Expense {name:" + name.getText() + " value:" + value.getText() + " category:" + category.getSelectedItem().toString() + "}");
                 //insertTransaction
 
                 Transaction transaction = new Transaction(
@@ -98,7 +94,7 @@ public class TransactionActivity extends Activity implements View.OnClickListene
                 );
                 BudgetApplication.getInstance().getTransactionDBHelper().insertTransaction(transaction);
                 ArrayList<Transaction> transactions = BudgetApplication.getInstance().getTransactionDBHelper().getAllTransaction();
-                for(Transaction tempTransaction : transactions){
+                for (Transaction tempTransaction : transactions) {
                     Log.d("CREATION", "All transactions: [" + tempTransaction.getId() + "]:" + tempTransaction.getName() + " = " + tempTransaction.getAmount());
                 }
                 startActivity(new Intent(TransactionActivity.this, MainActivity.class));

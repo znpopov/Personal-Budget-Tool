@@ -39,7 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @Override
     public CategoryAdapter.CategoriesViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+                                                                   int viewType) {
         return new CategoriesViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.category_item, parent, false));
     }
 
@@ -47,7 +47,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(CategoriesViewHolder holder, final int position) {
         Category category = categories.get(position);
         int categoryAmount = 0;
-        if (BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()) != null){
+        if (BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()) != null) {
             categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()).intValue();
         }
         holder.mTextView.setText(category.getName());
