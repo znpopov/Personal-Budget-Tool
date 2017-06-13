@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements View.OnClickListener, AddE
 
     @Override
     public final void onClick(final View v) {
-        Intent transactionIntent = new Intent(MainActivity.this, TransactionActivity.class);
+        Intent transactionIntent = new Intent(MainActivity.this, AddTransactionActivity.class);
         Bundle b = new Bundle();
         switch (v.getId()) {
             case R.id.homeBtn:
@@ -98,6 +98,7 @@ public class MainActivity extends Activity implements View.OnClickListener, AddE
                 startActivity(new Intent(MainActivity.this, CategoryActivity.class));
                 break;
             case R.id.transactionBtn:
+                startActivity(new Intent(MainActivity.this, AllTransactionsActivity.class));
                 break;
             default:
                 break;

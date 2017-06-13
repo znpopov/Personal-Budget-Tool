@@ -46,12 +46,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(CategoriesViewHolder holder, final int position) {
         Category category = categories.get(position);
-        int categoryAmount = 0;
+        Double categoryAmount = 0.0;
         if (BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()) != null) {
-            categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()).intValue();
+            categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId());
         }
         holder.mTextView.setText(category.getName());
-        holder.progressBar.setProgress(categoryAmount);
+        holder.progressBar.setProgress(categoryAmount.intValue());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -47,6 +47,7 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertTransaction(Transaction transaction) {
+
         SQLiteDatabase db = getWritableDatabase();
         insertTransaction(transaction, db);
         db.close();
