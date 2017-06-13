@@ -1,19 +1,14 @@
 package com.kirilv.android.splitme;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kirilv.android.splitme.model.Transaction;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.TransactionsViewHolder> {
 
@@ -34,19 +29,23 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @Override
     public TransactionAdapter.TransactionsViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                   int viewType) {
+                                                                        int viewType) {
         return new TransactionsViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(TransactionsViewHolder holder, final int position) {
-        Transaction transaction = BudgetApplication.getInstance().getTransactions().get(position);
+        Transaction transaction = BudgetApplication.getInstance().getTransactions().get(Long.valueOf(position));
+        if (transaction == null) {
+            return;
+        }
+
         holder.mTextView.setText(transaction.getName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
 //               TODO here we call the input form for a new Transaction where we can update an existing one
             }
         });
