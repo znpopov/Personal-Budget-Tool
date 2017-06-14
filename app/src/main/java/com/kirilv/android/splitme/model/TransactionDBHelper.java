@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.kirilv.android.splitme.BudgetApplication;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TransactionDBHelper extends SQLiteOpenHelper {
 
@@ -31,12 +34,12 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TRANSACTION_TABLE_NAME + "(" +
-                        TRANSACTION_COLUMN_ID + " INTEGER PRIMARY KEY, " +
-                        TRANSACTION_COLUMN_NAME_ID + " TEXT, " +
-                        TRANSACTION_COLUMN_CATEGORY_ID + " INTEGER, " +
-                        TRANSACTION_COLUMN_TYPE_ID + " INTEGER, " +
-                        TRANSACTION_COLUMN_AMOUNT + " DOUBLE, " +
-                        TRANSACTION_COLUMN_CREATED_AT + " INTEGER)"
+                TRANSACTION_COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                TRANSACTION_COLUMN_NAME_ID + " TEXT, " +
+                TRANSACTION_COLUMN_CATEGORY_ID + " INTEGER, " +
+                TRANSACTION_COLUMN_TYPE_ID + " INTEGER, " +
+                TRANSACTION_COLUMN_AMOUNT + " DOUBLE, " +
+                TRANSACTION_COLUMN_CREATED_AT + " INTEGER)"
         );
     }
 
@@ -47,9 +50,25 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertTransaction(Transaction transaction) {
+
         SQLiteDatabase db = getWritableDatabase();
         insertTransaction(transaction, db);
         db.close();
+        BudgetApplication app = BudgetApplication.getInstance();
+        HashMap<Long, Transaction> transactions = app.getTransactions();
+        HashMap<Long, Double> categoryAmounts = app.getCategoryAmounts();
+        transactions.put(Long.valueOf(transactions.size() + 1), transaction);
+
+        long categoryId = transaction.getCategoryId();
+        if (categoryAmounts.get(categoryId) != null) {
+            double value = categoryAmounts.get(categoryId);
+            value += transaction.getAmount();
+            categoryAmounts.put(categoryId, value);
+        } else {
+            categoryAmounts.put(categoryId, transaction.getAmount());
+        }
+
+        BudgetApplication.getInstance().getCategoryAmounts().get(transaction.getCategoryId());
         return true;
     }
 

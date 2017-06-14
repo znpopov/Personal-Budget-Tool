@@ -11,40 +11,32 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.kirilv.android.splitme.model.Category;
+import com.kirilv.android.splitme.model.Transaction;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class CategoryActivity extends Activity {
+public class AllTransactionsActivity extends Activity {
     private RecyclerView mRecyclerView;
-    private CategoryAdapter categoryAdapter;
+    private TransactionAdapter transactionAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_categories);
+        setContentView(R.layout.activity_all_transactions);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
         // specify an adapter (see also next example)
-        ArrayList<Category> categoriesList = new ArrayList<>(BudgetApplication.getInstance().getCategories().values());
+        ArrayList<Transaction> transactionsList = new ArrayList<>(BudgetApplication.getInstance().getTransactions().values());
 
-        categoryAdapter = new CategoryAdapter(categoriesList);
-        mRecyclerView.setAdapter(categoryAdapter);
-        Button addCategoryBtn = (Button) findViewById(R.id.addCategoryBtn);
-        addCategoryBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-                startActivity(new Intent(CategoryActivity.this, AddCategoryActivity.class));
-
-            }
-        });
+        transactionAdapter = new TransactionAdapter(transactionsList);
+        mRecyclerView.setAdapter(transactionAdapter);
     }
-
 }

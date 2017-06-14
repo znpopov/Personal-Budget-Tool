@@ -59,7 +59,7 @@ public class AddExpenseDialogFragment extends DialogFragment {
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         builder.setTitle(R.string.add_transaction_title)
-                .setView(inflater.inflate(R.layout.add_transaction_dialog, null))
+                .setView(inflater.inflate(R.layout.add_transaction, null))
                 .setPositiveButton(R.string.add_transaction, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Send the positive button event back to the host activity
