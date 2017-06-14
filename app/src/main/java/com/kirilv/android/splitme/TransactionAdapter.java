@@ -35,7 +35,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @Override
     public void onBindViewHolder(TransactionsViewHolder holder, final int position) {
-        Transaction transaction = BudgetApplication.getInstance().getTransactions().get(Long.valueOf(position));
+        Transaction transaction = BudgetApplication.getInstance().getTransactions().get(Long.valueOf(position + 1));
         if (transaction == null) {
             return;
         }

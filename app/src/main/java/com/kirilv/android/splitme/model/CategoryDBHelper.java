@@ -7,7 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.kirilv.android.splitme.BudgetApplication;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CategoryDBHelper extends SQLiteOpenHelper {
 
@@ -59,7 +62,11 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
     public boolean insertCategory(Category category) {
         SQLiteDatabase db = this.getWritableDatabase();
         insertCategory(category, db);
+
         db.close();
+        BudgetApplication app = BudgetApplication.getInstance();
+        HashMap<Long, Category> categories = app.getCategories();
+        categories.put(Long.valueOf(categories.size() + 1), category);
         return true;
     }
 

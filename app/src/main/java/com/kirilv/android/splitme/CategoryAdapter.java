@@ -47,9 +47,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(CategoriesViewHolder holder, final int position) {
         Category category = categories.get(position);
         Double categoryAmount = 0.0;
-        if (BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()) != null) {
-            categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId());
-        }
+//        if (BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()) != null) {
+//            categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId());
+//        }
         holder.mTextView.setText(category.getName());
         holder.progressBar.setProgress(categoryAmount.intValue());
 
@@ -61,18 +61,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         });
     }
 
-//        btButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                int position = (Integer) view.getTag();
-//                // Access the row position here to get the correct data item
-//                User user = getItem(position);
-//                // Do what you want here...
-//            }
-//        });
-
-
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return categories.size();

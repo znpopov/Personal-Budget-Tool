@@ -32,12 +32,19 @@ public class CategoryActivity extends Activity {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
         // specify an adapter (see also next example)
         ArrayList<Category> categoriesList = new ArrayList<>(BudgetApplication.getInstance().getCategories().values());
 
         categoryAdapter = new CategoryAdapter(categoriesList);
         mRecyclerView.setAdapter(categoryAdapter);
+        Button addCategoryBtn = (Button) findViewById(R.id.addCategoryBtn);
+        addCategoryBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                startActivity(new Intent(CategoryActivity.this, AddCategoryActivity.class));
+
+            }
+        });
     }
 
 }

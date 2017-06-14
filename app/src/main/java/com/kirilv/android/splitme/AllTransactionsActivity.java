@@ -25,7 +25,7 @@ public class AllTransactionsActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_categories);
+        setContentView(R.layout.activity_all_transactions);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
 
@@ -39,5 +39,4 @@ public class AllTransactionsActivity extends Activity {
         transactionAdapter = new TransactionAdapter(transactionsList);
         mRecyclerView.setAdapter(transactionAdapter);
     }
-
 }
