@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.kirilv.android.splitme.BudgetApplication;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class TransactionDBHelper extends SQLiteOpenHelper {
@@ -21,6 +22,7 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
     private static final String TRANSACTION_COLUMN_CATEGORY_ID = "categoryId";
     private static final String TRANSACTION_COLUMN_TYPE_ID = "typeId";
     private static final String TRANSACTION_COLUMN_AMOUNT = "amount";
+    private static final String TRANSACTION_COLUMN_DATE = "date";
     private static final String TRANSACTION_COLUMN_CREATED_AT = "created_at";
 
     private Context context;
@@ -39,6 +41,7 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
                 TRANSACTION_COLUMN_CATEGORY_ID + " INTEGER, " +
                 TRANSACTION_COLUMN_TYPE_ID + " INTEGER, " +
                 TRANSACTION_COLUMN_AMOUNT + " DOUBLE, " +
+                TRANSACTION_COLUMN_DATE + " Long, " +
                 TRANSACTION_COLUMN_CREATED_AT + " INTEGER)"
         );
     }
@@ -121,6 +124,7 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
         int categoryId = c.getInt(c.getColumnIndex(TRANSACTION_COLUMN_CATEGORY_ID));
         int typeId = c.getInt(c.getColumnIndex(TRANSACTION_COLUMN_TYPE_ID));
         double amount = c.getDouble(c.getColumnIndex(TRANSACTION_COLUMN_AMOUNT));
+        long date = c.getLong(c.getColumnIndex(TRANSACTION_COLUMN_DATE));
         long createdAt = c.getLong(c.getColumnIndex(TRANSACTION_COLUMN_CREATED_AT));
         return new Transaction(id, name, categoryId, typeId, amount);
     }
@@ -131,6 +135,7 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
         contentValues.put(TRANSACTION_COLUMN_CATEGORY_ID, transaction.getCategoryId());
         contentValues.put(TRANSACTION_COLUMN_TYPE_ID, transaction.getTypeId());
         contentValues.put(TRANSACTION_COLUMN_AMOUNT, transaction.getAmount());
+        contentValues.put(TRANSACTION_COLUMN_DATE, transaction.getDate().getTime());
         contentValues.put(TRANSACTION_COLUMN_CREATED_AT, transaction.getCreatedAt());
         return contentValues;
     }
