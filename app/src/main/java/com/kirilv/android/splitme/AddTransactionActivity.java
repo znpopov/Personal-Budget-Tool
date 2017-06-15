@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import com.kirilv.android.splitme.model.Category;
 import com.kirilv.android.splitme.model.Transaction;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,6 +47,11 @@ public class AddTransactionActivity extends FragmentActivity implements View.OnC
         value = (EditText) findViewById(R.id.transactionValue);
         datePicker = (EditText) findViewById(R.id.datePicker);
 
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = df.format(c.getTime());
+
+        datePicker.setText(formattedDate);
 
         datePicker.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -54,7 +60,6 @@ public class AddTransactionActivity extends FragmentActivity implements View.OnC
         });
 
 
-        Calendar c = Calendar.getInstance();
         mYear = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
