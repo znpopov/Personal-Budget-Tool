@@ -99,16 +99,16 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<Transaction> getAllTransaction() {
-        ArrayList<Transaction> categories = new ArrayList<>();
+        ArrayList<Transaction> transactions = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM " + TRANSACTION_TABLE_NAME, null);
         if (c != null) {
             while (c.moveToNext()) {
-                categories.add(initializeTransaction(c));
+                transactions.add(initializeTransaction(c));
             }
         }
         db.close();
-        return categories;
+        return transactions;
     }
 
     public Integer deleteTransaction(Integer id) {
@@ -121,7 +121,7 @@ public class TransactionDBHelper extends SQLiteOpenHelper {
     private Transaction initializeTransaction(Cursor c) {
         int id = c.getInt(c.getColumnIndex(TRANSACTION_COLUMN_ID));
         String name = c.getString(c.getColumnIndex(TRANSACTION_COLUMN_NAME_ID));
-        int categoryId = c.getInt(c.getColumnIndex(TRANSACTION_COLUMN_CATEGORY_ID));
+        long categoryId = c.getLong(c.getColumnIndex(TRANSACTION_COLUMN_CATEGORY_ID));
         int typeId = c.getInt(c.getColumnIndex(TRANSACTION_COLUMN_TYPE_ID));
         double amount = c.getDouble(c.getColumnIndex(TRANSACTION_COLUMN_AMOUNT));
         long date = c.getLong(c.getColumnIndex(TRANSACTION_COLUMN_DATE));

@@ -47,9 +47,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(CategoriesViewHolder holder, final int position) {
         Category category = categories.get(position);
         Double categoryAmount = 0.0;
-//        if (BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()) != null) {
-//            categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId());
-//        }
+        if (BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()) != null) {
+            categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId());
+        }
         holder.mTextView.setText(category.getName());
         holder.progressBar.setProgress(categoryAmount.intValue());
 

@@ -1,6 +1,7 @@
 package com.kirilv.android.splitme.model;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Transaction {
     private long id;
@@ -23,6 +24,7 @@ public class Transaction {
     public Transaction(long id, String name, long categoryId, int typeId, double amount) {
         this.id = id;
         this.name = name;
+        this.categoryId = categoryId;
         this.typeId = typeId;
         this.amount = amount;
         createdAt = System.currentTimeMillis() / 1000L;
@@ -49,6 +51,9 @@ public class Transaction {
     }
 
     public Date getDate() {
+        if (date == null ){
+            date = GregorianCalendar.getInstance().getTime();
+        }
         return date;
     }
 
