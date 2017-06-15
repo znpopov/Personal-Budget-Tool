@@ -62,7 +62,7 @@ public class AddCategoryActivity extends Activity implements View.OnClickListene
                 if (categoriesType.getSelectedItem().toString() == "Incomes") {
                     categoryType = 2;
                 }
-                Category category = new Category(name.getText().toString(), categoryDescription.getText().toString(), categoryType);
+                Category category = new Category(name.getText().toString(), categoryDescription.getText().toString(), categoryType, 0);
                 BudgetApplication.getInstance().getCategoryDBHelper().insertCategory(category);
 
                 startActivity(new Intent(AddCategoryActivity.this, MainActivity.class));

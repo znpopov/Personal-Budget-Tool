@@ -92,7 +92,7 @@ public class MainActivity extends Activity implements View.OnClickListener, AddE
                 startActivity(transactionIntent);
                 break;
             case R.id.budgetBtn:
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                startActivity(new Intent(MainActivity.this, BudgetActivity.class));
                 break;
             case R.id.categoriesBtn:
                 startActivity(new Intent(MainActivity.this, CategoryActivity.class));
