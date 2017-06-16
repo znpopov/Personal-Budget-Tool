@@ -12,10 +12,6 @@ import com.kirilv.android.splitme.model.Category;
 
 import java.util.ArrayList;
 
-/**
- * Created by zdravkop on 6/15/2017.
- */
-
 public class BudgetActivity extends Activity {
 
     private RecyclerView mRecyclerView;
