@@ -15,12 +15,13 @@ import java.util.HashMap;
 public class CategoryDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Categories.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
     private static final String CATEGORY_TABLE_NAME = "Categories";
     private static final String CATEGORY_COLUMN_ID = "_id";
     private static final String CATEGORY_COLUMN_NAME = "name";
     private static final String CATEGORY_COLUMN_DESCRIPTION = "description";
     private static final String CATEGORY_COLUMN_TYPE_ID = "typeId";
+    private static final String CATEGORY_COLUMN_BUDGET = "budget";
 
     private Context context;
 
@@ -36,16 +37,17 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
                         CATEGORY_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         CATEGORY_COLUMN_NAME + " TEXT, " +
                         CATEGORY_COLUMN_DESCRIPTION + " TEXT, " +
-                        CATEGORY_COLUMN_TYPE_ID + " INTEGER)"
+                        CATEGORY_COLUMN_TYPE_ID + " INTEGER, " +
+                        CATEGORY_COLUMN_BUDGET + " INTEGER)"
         );
         addDefaultValues(db);
     }
 
     private void addDefaultValues(SQLiteDatabase db){
-        Category food = new Category("Food", "Expenses for food", 1);
-        Category drinks = new Category("Drinks", "Expenses for drinks", 1);
-        Category rent = new Category("House rent", "Expenses for house rent", 1);
-        Category salary = new Category("Salary", "Incomes from salary", 2);
+        Category food = new Category("Food", "Expenses for food", 1, 0);
+        Category drinks = new Category("Drinks", "Expenses for drinks", 1, 0);
+        Category rent = new Category("House rent", "Expenses for house rent", 1, 0);
+        Category salary = new Category("Salary", "Incomes from salary", 2, 0);
         Category[] categories =  { food, drinks,  rent, salary};
 
         for (Category category : categories) {
@@ -75,7 +77,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    boolean updateCategory(Category category) {
+    public boolean updateCategory(Category category) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.update(CATEGORY_TABLE_NAME, setContentValues(category), CATEGORY_COLUMN_ID + " = ? ", new String[]{Long.toString(category.getId())});
         db.close();
@@ -129,7 +131,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
         String name = c.getString(c.getColumnIndex(CATEGORY_COLUMN_NAME));
         String description = c.getString(c.getColumnIndex(CATEGORY_COLUMN_DESCRIPTION));
         int typeId = c.getInt(c.getColumnIndex(CATEGORY_COLUMN_TYPE_ID));
-        return new Category(id, name, description, typeId);
+        return new Category(id, name, description, typeId, 0);
     }
 
     private ContentValues setContentValues(Category category) {
@@ -137,6 +139,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
         contentValues.put(CATEGORY_COLUMN_NAME, category.getName());
         contentValues.put(CATEGORY_COLUMN_TYPE_ID, category.getType());
         contentValues.put(CATEGORY_COLUMN_DESCRIPTION, category.getDescription());
+        contentValues.put(CATEGORY_COLUMN_BUDGET, category.getBudget());
         return contentValues;
     }
 }

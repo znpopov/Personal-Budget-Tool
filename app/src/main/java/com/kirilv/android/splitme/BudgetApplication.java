@@ -36,6 +36,10 @@ public class BudgetApplication extends Application {
         return categoryAmounts;
     }
 
+    public void updateCategory(Category category) {
+        categoryDBHelper.updateCategory(category);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

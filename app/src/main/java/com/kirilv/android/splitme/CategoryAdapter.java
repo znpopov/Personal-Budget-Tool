@@ -29,7 +29,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             super(v);
             mTextView = (TextView) v.findViewById(R.id.name);
             progressBar = (ProgressBar) v.findViewById(R.id.progressBar);
-            progressBar.setMax(MAX_PROGRESSBAR_VALUE);
         }
     }
 
@@ -47,10 +46,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(CategoriesViewHolder holder, final int position) {
         Category category = categories.get(position);
         Double categoryAmount = 0.0;
-//        if (BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()) != null) {
-//            categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId());
-//        }
+        if (BudgetApplication.getInstance().getCategoryAmounts().get(category.getId()) != null) {
+            categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId());
+        }
         holder.mTextView.setText(category.getName());
+        holder.progressBar.setMax(category.getBudget());
         holder.progressBar.setProgress(categoryAmount.intValue());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
