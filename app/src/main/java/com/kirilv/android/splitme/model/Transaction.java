@@ -1,5 +1,8 @@
 package com.kirilv.android.splitme.model;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class Transaction {
     private long id;
     private String name;
@@ -7,34 +10,39 @@ public class Transaction {
     private int typeId; // 1 for Expenses, 2 for Incomes and 3 for Savings
     private double amount;
     private long createdAt;
+    private Date date;
 
-    public Transaction(String name, long categoryId, int typeId, double amount) {
+    public Transaction(String name, long categoryId, int typeId, double amount, Date date) {
         this.name = name;
         this.categoryId = categoryId;
         this.typeId = typeId;
         this.amount = amount;
-        createdAt = System.currentTimeMillis()/1000L;
+        this.date = date;
+        createdAt = System.currentTimeMillis() / 1000L;
     }
 
     public Transaction(long id, String name, long categoryId, int typeId, double amount) {
         this.id = id;
         this.name = name;
+        this.categoryId = categoryId;
         this.typeId = typeId;
         this.amount = amount;
-        createdAt = System.currentTimeMillis()/1000L;
+        createdAt = System.currentTimeMillis() / 1000L;
     }
 
-    public long getId(){
+    public long getId() {
         return id;
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public long getCategoryId(){
+    public long getCategoryId() {
         return categoryId;
     }
 
-    public int getTypeId(){
+    public int getTypeId() {
         return typeId;
     }
 
@@ -42,8 +50,14 @@ public class Transaction {
         return amount;
     }
 
-    public long getCreatedAt(){
-        return createdAt;
+    public Date getDate() {
+        if (date == null ){
+            date = GregorianCalendar.getInstance().getTime();
+        }
+        return date;
     }
 
+    public long getCreatedAt() {
+        return createdAt;
+    }
 }

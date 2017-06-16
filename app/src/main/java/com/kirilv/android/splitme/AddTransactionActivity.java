@@ -1,44 +1,68 @@
 package com.kirilv.android.splitme;
 
-import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.kirilv.android.splitme.model.Category;
 import com.kirilv.android.splitme.model.Transaction;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
-public class AddTransactionActivity extends Activity implements View.OnClickListener {
+public class AddTransactionActivity extends FragmentActivity implements View.OnClickListener {
 
     private Integer transactionType;
-
     private EditText name;
-
     private EditText value;
-
+    public EditText datePicker;
     private Button addExpense;
-
     private Button cancel;
-
     private Spinner category;
+    static final int DATE_DIALOG_ID = 0;
+    private int mYear, mMonth, mDay;
+    public Date transactionDate;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_transaction);
+        setContentView(R.layout.add_transaction);
 
         name = (EditText) findViewById(R.id.transactionName);
         value = (EditText) findViewById(R.id.transactionValue);
+        datePicker = (EditText) findViewById(R.id.datePicker);
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = df.format(c.getTime());
+
+        datePicker.setText(formattedDate);
+
+        datePicker.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showDialog(DATE_DIALOG_ID);
+            }
+        });
+
+
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
 
         addExpense = (Button) findViewById(R.id.saveBtn);
         addExpense.setOnClickListener(this);
@@ -79,19 +103,20 @@ public class AddTransactionActivity extends Activity implements View.OnClickList
 
     }
 
+
     @Override
     public final void onClick(final View v) {
         switch (v.getId()) {
             case R.id.saveBtn:
                 Log.d("CREATION", "Add Expense {name:" + name.getText() + " value:" + value.getText() + " category:" + category.getSelectedItem().toString() + "}");
-                //insertTransaction
+
 
                 Transaction transaction = new Transaction(
                         name.getText().toString(),
                         BudgetApplication.getInstance().getCategoryDBHelper().getCategory(category.getSelectedItem().toString()).getId(),
                         transactionType,
-                        new Double(value.getText().toString())
-                );
+                        new Double(value.getText().toString()), transactionDate);
+
                 BudgetApplication.getInstance().getTransactionDBHelper().insertTransaction(transaction);
                 ArrayList<Transaction> transactions = BudgetApplication.getInstance().getTransactionDBHelper().getAllTransaction();
                 for (Transaction tempTransaction : transactions) {
@@ -106,7 +131,30 @@ public class AddTransactionActivity extends Activity implements View.OnClickList
             default:
                 break;
         }
-        ;
     }
 
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+            case DATE_DIALOG_ID:
+                return new DatePickerDialog(this,
+                        mDateSetListener,
+                        mYear, mMonth, mDay);
+
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+        public void onDateSet(DatePicker view, int year, int monthOfYear,
+                              int dayOfMonth) {
+            mYear = year;
+            mMonth = monthOfYear;
+            mDay = dayOfMonth;
+
+            transactionDate = new GregorianCalendar(mYear, mMonth, mDay).getTime();
+
+            datePicker.setText(new StringBuilder().append(mDay).append("/").append(mMonth + 1).append("/").append(mYear));
+        }
+    };
 }
