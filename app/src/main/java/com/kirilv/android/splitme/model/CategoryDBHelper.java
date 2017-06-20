@@ -25,7 +25,6 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
 
     private Context context;
 
-
     public CategoryDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
@@ -68,7 +67,7 @@ public class CategoryDBHelper extends SQLiteOpenHelper {
         db.close();
         BudgetApplication app = BudgetApplication.getInstance();
         HashMap<Long, Category> categories = app.getCategories();
-        categories.put(Long.valueOf(categories.size() + 1), category);
+        categories.put(Long.valueOf(getAllCategories().size()), category);
         return true;
     }
 

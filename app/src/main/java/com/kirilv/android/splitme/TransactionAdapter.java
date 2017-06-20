@@ -16,10 +16,12 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     public static class TransactionsViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView;
+        public TextView tValue;
 
         public TransactionsViewHolder(View v) {
             super(v);
             mTextView = (TextView) v.findViewById(R.id.name);
+            tValue = (TextView) v.findViewById(R.id.value);
         }
     }
 
@@ -41,6 +43,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         }
 
         holder.mTextView.setText(transaction.getName());
+        holder.tValue.setText(String.valueOf(transaction.getAmount()) + " BGN");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.app.DialogFragment;
 //import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -18,8 +20,6 @@ import android.widget.ProgressBar;
 
 
 public class MainActivity extends Activity implements View.OnClickListener, AddExpenseDialogFragment.AddExpenseDialogListener {
-
-    private Button home;
 
     private Button budget;
 
@@ -46,15 +46,14 @@ public class MainActivity extends Activity implements View.OnClickListener, AddE
         overallBar.setVisibility(View.VISIBLE);
         overallBar.setMax(100);
         overallBar.setProgress(50);
+        overallBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#4CAF50")));
+
 
         dailyBar = (ProgressBar) findViewById(R.id.dailyBar);
         addIncome = (Button) findViewById(R.id.incomeBtn);
         addIncome.setOnClickListener(this);
         addExpense = (Button) findViewById(R.id.expenseBtn);
         addExpense.setOnClickListener(this);
-
-        home = (Button) findViewById(R.id.homeBtn);
-        home.setOnClickListener(this);
 
         budget = (Button) findViewById(R.id.budgetBtn);
         budget.setOnClickListener(this);
@@ -78,9 +77,6 @@ public class MainActivity extends Activity implements View.OnClickListener, AddE
         Intent transactionIntent = new Intent(MainActivity.this, AddTransactionActivity.class);
         Bundle b = new Bundle();
         switch (v.getId()) {
-            case R.id.homeBtn:
-                startActivity(new Intent(MainActivity.this, MainActivity.class));
-                break;
             case R.id.expenseBtn:
                 b.putString("type", "expense");
                 transactionIntent.putExtras(b);

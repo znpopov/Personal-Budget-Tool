@@ -1,6 +1,8 @@
 package com.kirilv.android.splitme;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,8 +52,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             categoryAmount = BudgetApplication.getInstance().getCategoryAmounts().get(category.getId());
         }
         holder.mTextView.setText(category.getName());
-        holder.progressBar.setMax(category.getBudget());
+        if (category.getBudget() == 0) {
+            holder.progressBar.setMax(MAX_PROGRESSBAR_VALUE);
+        } else {
+            holder.progressBar.setMax(category.getBudget());
+        }
         holder.progressBar.setProgress(categoryAmount.intValue());
+        if (categoryAmount.intValue() > category.getBudget() / 2) {
+            holder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
+
+        } else {
+            holder.progressBar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#4CAF50")));
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

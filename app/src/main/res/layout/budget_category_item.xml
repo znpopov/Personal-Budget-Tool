@@ -1,33 +1,41 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <TextView
         android:id="@+id/budgetCategoryName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:paddingBottom="5dp"
-        android:textAlignment="center" />
+        android:gravity="center"
+        android:fontFamily="Roboto"
+        android:text="test"
+        android:layout_marginBottom="10dp"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/budgetCategoryValue"
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        android:hint="budget"/>
+        android:layout_marginTop="16dp"
+        android:hint="budget"
+        android:inputType="numberSigned" />
 
     <Button
         android:id="@+id/saveCategoryBudgetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginBottom="6dp"
+        android:fontFamily="Roboto"
+        android:background="@color/blue"
+        android:layout_alignParentRight="true"
         android:text="Save" />
 
 </RelativeLayout>

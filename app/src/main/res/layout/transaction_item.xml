@@ -1,7 +1,27 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/name"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_alignParentTop="true"
-    android:paddingBottom="5dp"
-    android:textAlignment="center" />
+    android:orientation = "horizontal"
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        android:text="transactionName"
+        android:fontFamily="Roboto"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:fontFamily="Roboto"
+        android:layout_alignParentRight="true"
+        android:text="value" />
+</RelativeLayout>

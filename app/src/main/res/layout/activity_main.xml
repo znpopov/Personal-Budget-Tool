@@ -1,98 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"	>
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
-	<LinearLayout
-		android:id="@+id/navigation"
-		android:orientation="horizontal"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_alignParentTop="true">
+    <RelativeLayout
+        android:id="@+id/navigation"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        android:background="@color/blue"
+        android:orientation="horizontal"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp">
 
-		<Button
-			android:id="@+id/homeBtn"
-			android:layout_width="wrap_content"
-			android:layout_height="56dp"
-			android:layout_weight="1"
-			android:text="@string/btn_home"/>
+        <Button
+            android:id="@+id/budgetBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="56sp"
+            android:fontFamily="Roboto"
+            android:layout_alignParentLeft="true"
+            android:background="@color/blue"
+            android:text="@string/btn_budget"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
 
-		<Button
-			android:id="@+id/budgetBtn"
-			android:layout_width="wrap_content"
-			android:layout_height="56dp"
-			android:layout_weight="1"
-			android:text="@string/btn_budget"/>
+        <Button
+            android:id="@+id/categoriesBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="56sp"
+            android:layout_centerInParent="true"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:text="@string/btn_categories"
+            android:fontFamily="Roboto"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
 
-		<Button
-			android:id="@+id/categoriesBtn"
-			android:layout_width="wrap_content"
-			android:layout_height="56dp"
-			android:layout_weight="1"
-			android:text="@string/btn_categories"/>
-		<Button
-			android:id="@+id/transactionBtn"
-			android:layout_width="wrap_content"
-			android:layout_height="56dp"
-			android:layout_weight="1"
-			android:text="@string/btn_transactions"/>
-	</LinearLayout>
+        <Button
+            android:id="@+id/transactionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="56sp"
+            android:layout_alignParentRight="true"
+            android:background="@color/blue"
+            android:text="@string/btn_transactions"
+            android:textColor="#FFFFFF"
+            android:fontFamily="Roboto"
+            android:textSize="16sp" />
+    </RelativeLayout>
 
-	<LinearLayout
-		android:orientation="vertical"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_below="@id/navigation">
-		<TextView
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/prgr_overall"
-			/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navigation"
+        android:orientation="vertical"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp">>
 
-		<ProgressBar
-			android:id="@+id/overallBar"
-			style="?android:attr/progressBarStyleHorizontal"
-			android:layout_width="fill_parent"
-			android:layout_height="30dp"
-			/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/prgr_overall"
+            android:fontFamily="Roboto"
+            android:textColor="#000000"
+            android:textSize="24sp" />
 
-		<TextView
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="@string/prgr_daily"
-			/>
+        <ProgressBar
+            android:id="@+id/overallBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" />
 
-		<ProgressBar
-			android:id="@+id/dailyBar"
-			style="?android:attr/progressBarStyleHorizontal"
-			android:layout_width="fill_parent"
-			android:layout_height="30dp"
-			/>
-	</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#000000"
+            android:fontFamily="Roboto"
+            android:textSize="24sp"
+            android:text="@string/prgr_daily" />
 
-	<LinearLayout
-		android:orientation="horizontal"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_alignParentBottom="true"
-		android:layout_marginBottom="20dp">
+        <ProgressBar
+            android:id="@+id/dailyBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp" />
+    </LinearLayout>
 
-		<Button
-			android:id="@+id/incomeBtn"
-			android:layout_width="wrap_content"
-			android:layout_height="56dp"
-			android:layout_weight="1"
-			android:text="@string/btn_income"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="24sp"
+        android:layout_marginRight="24sp"
+        android:orientation="horizontal">
 
-		<Button
-			android:id="@+id/expenseBtn"
-			android:layout_width="wrap_content"
-			android:layout_height="56dp"
-			android:layout_weight="1"
-			android:text="@string/btn_expense"/>
+        <Button
+            android:id="@+id/incomeBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="100dp"
+            android:background="@drawable/circle"
+            android:drawableTop="@drawable/ic_action_add"
+            android:paddingTop="20dp" />
 
-	</LinearLayout>
 
+        <Button
+            android:id="@+id/expenseBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/circle"
+            android:drawableTop="@drawable/ic_action_add"
+            android:paddingTop="20dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Incomes"
+            android:fontFamily="Roboto"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical|right"
+            android:text="Add Expenses"
+            android:fontFamily="Roboto"
+            android:textSize="20sp" />
+    </RelativeLayout>
 </RelativeLayout>
