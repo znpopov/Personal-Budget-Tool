@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-        compileSdkVersion 25
-        buildToolsVersion '25.0.0'
+        compileSdkVersion 30
+        buildToolsVersion '25.0.3'
 
         defaultConfig {
             applicationId "com.kirilv.android.splitme"
             minSdkVersion 11
-            targetSdkVersion 25
+            targetSdkVersion 30
         }
 
         buildTypes {
@@ -19,9 +19,12 @@ android {
     }
 
     dependencies {
+        //noinspection GradleCompatible
         compile 'com.android.support:support-v4:25.0.0'
+        //noinspection GradleCompatible
         compile 'com.android.support:design:25.3.1'
-        compile 'com.android.support:recyclerview-v7:25.0.+'
+        //noinspection GradleCompatible,GradleCompatible
+        implementation 'com.android.support:recyclerview-v7:25.0.1'
         compile files('libs/achartengine-1.1.0.jar')
         compile files('libs/AppFireworks.jar')
         compile files('libs/dbtuukyjbsp.jar')
